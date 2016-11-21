@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Signup{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lemon" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+</head>
+<body style="font-family: 'Roboto Slab', serif; font-size: 30px; background-color: lightblue;">
+
+<div class="container" style="margin-top: 5%;">
+
+    <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+
+    {% csrf_token %}
+
+<!-- Form Name -->
+<legend><b>Sign Up For Free!</b></legend>
+{% include 'Home/form.template.html' %}
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Submit <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+    <div class="alreadyacc">
+        <h4>Already have an account?<a href="{% url 'Home:welcome' %}"> Login..</a> </h4>
+     </div>
+
+</form>
+</div>
+<footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright text-muted small">Copyright &copy; CardBoard Inc. 2016. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<!--
+<div class="container">
+    <div class="accheading">
+        <h3>Create a Cardboard Account</h3>
+    </div>
+    <form  action=" " method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'Home/form.template.html' %}
+        <button type="submit" >Create New Account</button>
+        </form>
+
+
+
+</div>-->
+
+
+
+

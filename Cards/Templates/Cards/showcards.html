@@ -1,0 +1,184 @@
+<!-- <img src="/media/{{ values }}" /> -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+{% load staticfiles %}
+<title>
+    Cardboard
+</title>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'Cards/cards.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+    $("#pass").hide();
+    $(".mylink").click(function(){
+        $(".mylink").hide();
+        $("#pass").show();
+        $('#highlight').focus().val($('#highlight').val());
+
+    });
+
+    });
+
+
+
+    $(document).ready(function(){
+   $('#pass').on('focusout', function () {
+    var $elem = $(this);
+    setTimeout(function () {
+        if (!$elem.find(':focus').length) {
+            $('#pass').hide();
+            $('.mylink').show();
+        }
+    }, 0);
+});
+
+    });
+
+
+    $(document).ready(function(){
+    $("#close").click(function(){
+    $(".mylink").show();
+    $("#pass").hide();
+
+    });
+});
+    </script>
+</head>
+<div class="container-fluid">
+<h1>Cards</h1>
+<br>
+    {% for x in cards %}
+        <div class="well" style="display: inline-block; width: 250px; padding: 1%; margin-right: 2%;">
+        <button class="btn btn-primary" name="check_user" data-toggle="modal" data-target="#popUpWindow{{ x.pk }}" style="color:black; background-color: transparent; border-style: none;">
+        <div class="boxes" style="border-style: solid; width:200px; background: snow;">
+            {% for y in x.database.all %}
+                {% if y.type == 0 %}
+                    {{ y.data }}<br>
+                {% elif y.type == 6 %}
+                    {{ y.data }}<br>
+                {% endif %}
+                {% endfor %}
+        </div>
+
+        </button>
+
+
+        <div class="modal fade" role="dialog" id="popUpWindow{{ x.pk }}">
+        <div class="modal-dialog" style="width: 50%; ">
+        <div class="modal-content" style="background-color: whitesmoke;">
+        <div class="modal-header" style="height: 235px; width:100%;">
+        <div class="image" style="box-shadow: 5px 5px 2px #cccccc; width: inherit;height: inherit;" ><img src="/media/default.jpg" class="img-responsive" style="width: inherit; height: inherit; overflow: hidden; "></div>
+
+
+        {% for y in x.database.all %}
+            {% if y.type == 0 %}
+                <div class="heading">
+                <h4 class="modal-title" style="height: 40%; width:100%; top:0%;">
+                    <div class="banner">
+
+                    </div>
+                    <div class="text-head">
+                    <i class="fa fa-pencil-square-o"></i> <b>{{ y.data }}</b>
+                    </div>
+                </h4>
+
+                </div>
+        </div>
+        <div class="modal-body" style="margin-top: 5%;">
+        <div class="description">
+        {% elif y.type == 6 %}
+                <div class="desc">
+                    <div class="about"><i class="fa fa-pencil-square"></i><b> About</b><br></div>
+            <div class="con" style="margin-top: 2%; margin-left: 5%;"><a href="#" class="mylink" id="des_id" title="click to change">{{ y.data }}</a></div>
+            <form action="" method="post" id="pass">
+                {% csrf_token %}
+                <input type="text" name="card_id" value="{{ x.pk }}" hidden>
+                <input type="text" name="data_id" value="{{ y.pk }}" hidden>
+                <input type="text" class="form-control" style="width:100%; word-wrap: break-word;" id="highlight" name="descpedit" value="{{ y.data }}" >
+                <button type="submit" class="btn btn-success" name="save_about" id="save_me">Save</button>
+            </form>
+                </div>
+        </div>
+
+        <div class="post-box">
+           <div class="post"><i class="fa fa-commenting" aria-hidden="true"></i><b> Post-Box</b></div>
+            <div class="post-form" style="width: 100%;margin-top: 8%;">
+
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="card_id" value="{{ x.pk }}" hidden>
+                <div class="comment-frame" >
+                    <div class="comment-box" style="padding: 10px;">
+                        <textarea class="form-control" id="comment-text"  name="com_text" rows="2" placeholder="Write a comment…" style="word-wrap:break-word; border: transparent;"></textarea>
+                        <div class="pho" style=" width:99.81%;" >
+                            <label for="upload">
+                              <span class="glyphicon glyphicon-picture" id="pic" aria-hidden="true" title="Upload Photo "></span>
+                              <input type="file" name="upload_photo" id="upload" style="display:none;">
+                            </label>
+                            <label for="upload1">
+                                <span class="glyphicon glyphicon-paperclip" id="pfa"  aria-hidden="true" title="Attach File"></span>
+                                <input type="file" name="upload_attach" id="upload1" style="display:none;">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" id="add_each" name="add_all">Save</button>
+            </form>
+            </div>
+
+        </div>
+
+        <div class="activity">
+            <div class="act"><span class="glyphicon glyphicon-th-list"></span><b> Activities</b></div>
+            <div class="data_all" style="margin-top: 5%;">
+            {% elif y.type == 2 %}
+            <div class="imagebox" style="width:80%; ">
+            <img src="/media/{{ y.data }}"  style="width:100%; overflow: hidden; border-radius: 2%; box-shadow:0px 2px 2px #B3B3B3;">
+            <p align="right">15 Sep'16 10:04pm</p>
+            </div>
+            <br>
+
+            {% elif y.type == 5 %}
+            <a href="/media/{{ y.data }}" style="margin-left:18px;">See File</a>
+                    <br>
+
+            {% elif y.type == 1 %}
+                    <div class="comment" style="margin-left: 18px;">
+                    {{ y.data }}
+                    </div>
+            <br>
+
+
+                {% endif %}
+            {% endfor %}
+        </div>
+        </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+    {% endfor %}
+
+
+</div>

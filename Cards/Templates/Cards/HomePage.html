@@ -1,0 +1,73 @@
+{% extends 'Cards/base.html' %}
+{% block body %}
+    <title>Home | CardBoard</title>
+{% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Cards/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Cards/cards.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Cards/sticky.css' %}">
+    {% include 'Cards/navigation.html' %}
+<div class="container">
+        <h2>Your Personal Cards</h2>
+        <div class="well" style="background: white;">
+        <div class="container" style="width: inherit">
+        <h4>Recently Made</h4>
+        </div>
+            {% if flag == 1 %}
+<ul class="cards_display">
+               {% for x in cards %}
+                    <li>
+            <a href="#popUpWindow{{ x.pk }}" name="check_user" data-toggle="modal" style="text-decoration: none;">
+            <div id="sum{{ x.pk }}" style="margin-top: 20%;">
+            {% for y in x.database.all %}
+                {% if y.type == 0 %}
+                    <h2>{{ y.data }}</h2>
+                {% elif y.type == 6 %}
+                    <p>{{ y.data }}</p>
+                {% endif %}
+                {% endfor %}
+            <p style="text-align: right; color: dimgray;">{{ x.card_date }}</p>
+            </div>
+        </a>
+
+        </li>
+               {% include 'Cards/Card_Modals.html' %}
+               {% include 'Cards/Cards_Sticky.html' %}
+            {% endfor %}
+</ul>
+                <div class="link">
+                <a href="{% url 'cards:show_card' %}">See All <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            {% else %}
+                <h4 style="color: gray;">Oops! You don't have any card</h4>
+            {% endif %}
+        <br>
+
+        <br><br><br>
+        <h4>Make New Card</h4>
+        <div class="panel-group" style="width: 300px;">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1" style="text-decoration: none;">Add Card</a>
+        </h4>
+        </div>
+
+        <div id="collapse1" class="panel-collapse collapse" style="padding: 5%;">
+            <form action="" method="post">
+            {% csrf_token %}
+        <div class="panel-body">Title</div>
+            <div class="form-group">
+            <input type="text" class="form-control" name="textbox"></div>
+        <div class="panel-footer">Description</div>
+                <div class="form-group">
+                    <textarea class="form-control" id="descp" rows="3" cols="34" name="descp"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Add Card</button>
+            </form>
+        </div>
+        </div>
+        </div>
+        </div>
+</div>
+
+{% endblock %}

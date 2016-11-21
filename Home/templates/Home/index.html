@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+
+
+    <title>CardBoard</title>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="{% static 'Home/landing-page.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'Home/style_login.css' %}" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>CardBoard</h1>
+                        <h3>your best work manager</h3>
+                        <hr class="intro-divider">
+                        <div class="vid-container">
+                        <div class="box">
+                        <h1>Login</h1>
+                        <form  action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                        <input type="text" placeholder="Username" name="username" autocomplete="off" required>
+                        <input type="password" placeholder="Password" name="password" autocomplete="off" required>
+                        <button type="submit">Login</button>
+                        <a href="/accounts/google/login/" id="google">Login with google</a>
+                        </form>
+                        </div>
+
+                        </div>
+                        <br>
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="{% url 'Home:signup' %}" class="btn btn-default btn-lg"><span class="network-name">New User? Sign Up</span></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+
+	<a  name="services"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Arrange Your Personal Notes:<br>Cards</h2>
+                    <p class="lead">CardBoard makes it possible to arrange your personal cards in an organized and presentable way providing the 
+					comfort to let you modify them in a most easiest and fun ways.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="/media/ipad.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Work In a Team:<br>Boards</h2>
+                    <p class="lead">Whether it’s for work, a side project or even the next family vacation, CardBoard helps your team stay organized.
+					Keep yourself up to date and share it with your members and let them see and comment.</p>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <img class="img-responsive" src="/media/teamwork.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Always In Sync:<br>Have it anywhere</h2>
+                    <p class="lead">No matter where you are, CardBoard stays in sync across all of your devices. Collaborate with your team anywhere, from sitting on the bus to sitting on the beach.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="/media/sync.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Open Source at:</h2>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-bitbucket" aria-hidden="true"></i> <span class="network-name">Bitbucket</span></a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/KamaljeetSingh/Minor-2016-Django" class="btn btn-default btn-lg" target="_blank"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="copyright text-muted small">Copyright &copy; CardBoard Inc. 2016. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

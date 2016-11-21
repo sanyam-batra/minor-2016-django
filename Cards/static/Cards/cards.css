@@ -1,0 +1,275 @@
+.editable
+        {
+            padding: 2px;
+        }
+.editable:hover
+        {
+            cursor: pointer;
+            background-color: #D9EDF8;
+
+        }
+.heading
+{
+    color: white;
+}
+
+.heading .modal-title .text-head
+{
+    position: absolute;
+    margin-top: -10%;
+    width:95%;
+    text-align: right;
+    font-size: 50px;
+    z-index: 15;
+}
+
+.desc
+{
+    position: relative;
+    border: 2px solid lightgrey;
+    height:70px;
+    width:70%;
+
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+}
+
+.desc_content
+{
+    border-style: solid;
+    height: 40px;
+    width: 70%;
+}
+
+.desc .about
+{
+    position: absolute;
+    top: -20%;
+    left: 5%;
+    font-size: 20px;
+    color: gray;
+    z-index: 50;
+    background-color: whitesmoke;
+
+}
+
+
+.post-box
+{
+    position: relative;
+    border: 2px solid lightgrey;
+    width: 70%;
+    margin-top: 5%;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+}
+
+.post
+{
+    position: absolute;
+    top: -7%;
+    left: 5%;
+    color: gray;
+    font-size: 20px;
+    z-index: 50;
+    background-color: whitesmoke;
+
+}
+
+.activity
+{
+    position: relative;
+    border: 2px solid lightgrey;
+    width: 70%;
+    margin-top: 5%;
+    height:auto;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+
+}
+
+.act
+{
+    position: absolute;
+    top:-1.5%;
+    left: 5%;
+    color: gray;
+    font-size: 20px;
+    z-index: 50;
+    background-color: whitesmoke;
+}
+
+.mylink:hover
+{
+    text-decoration: none;
+}
+
+
+#comment-text
+{
+    position: relative;
+    top:-36px;
+    padding: 10px;
+    border-radius: 0;
+
+}
+
+.pho
+{
+    position: relative;
+    top:-35.4px;
+    left:0.5px;
+    background: white;
+    border-radius:0;
+
+
+}
+
+#pfa
+{
+    position: absolute;
+    right:22px;
+
+    color:darkgray;
+
+
+}
+#pic
+{   position: absolute;
+    right:50px;
+    color: darkgray;
+
+}
+#pfa:hover
+{
+    cursor: pointer;
+    color:gray;
+}
+#pic:hover
+{
+    cursor: pointer;
+    color:gray;
+}
+#add_each
+{
+    position: relative;
+    top:-32px;
+    left:10px;
+}
+.activity h4
+{
+    position: relative;
+    top:-22px;
+    left:30px;
+    color: darkgray;
+}
+.act1
+{
+    position:relative;
+    left:-1px;
+    top:-44px;
+}
+.act2
+{
+    position: relative;
+    left:125px;
+    top:-44.4px;
+
+
+}
+.imagebox
+{
+    margin-left:18px;
+}
+
+.modal-footer .btn:hover {
+    color: firebrick;
+}
+
+.about-cont a
+{
+    text-decoration: none;
+    color:black;
+    font-size:16px;
+}
+.about-cont a:hover
+{
+    text-decoration: none;
+    color:darkgray;
+}
+
+.comment-box textarea
+{
+   word-wrap:break-word;
+
+    width: 90%;
+    height:8em;
+    font-size: 16px;
+}
+
+.add_options{
+    position: absolute;
+    left:40em;
+    top:19.5em;
+    font-weight: 700;
+
+
+}
+
+.checklist
+{
+
+    position:relative;
+    top:-3em;
+    width: 70%;
+    border: 2px solid lightgray;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+
+}
+.check
+{
+    position: absolute;
+    top:-15px;
+    background-color: whitesmoke;
+    z-index: 50;
+    left: 5%;
+    font-size: 20px;
+    color: gray;
+
+}
+.add_item_link{
+    position: relative;
+    top:7px;
+    left:4px;
+}
+.add_item_link
+{
+    position: relative;
+    left:27em;
+}
+.add_item_link:hover
+{
+    text-decoration: none;
+}
+form[name="item_form"]
+{
+    position: relative;
+    top:-60px;
+}
+
+.vastu
+{
+    left: 5% ;
+    position: relative;
+    top:5px;
+}
+.progress
+{
+    position:relative;
+    top:2em;
+}

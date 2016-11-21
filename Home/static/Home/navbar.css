@@ -1,0 +1,151 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab';
+@import 'https://fonts.googleapis.com/css?family=Pacifico';
+body
+{
+    font-family: 'Roboto Slab', serif;
+}
+
+#navi
+{
+    background: #026aa7;
+    border-radius:0;
+    position: relative;
+    top:-1px;
+    left: -0.56px;
+    width: 100.1%;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    left:620px;
+    font-size:25px;
+    opacity: 0.8;
+    font-family: 'Pacifico', cursive;
+    letter-spacing: 1px;
+
+}
+
+.navbar-brand:hover
+{
+    opacity:1;
+}
+.boardshead
+{
+    position: relative;
+    background-color:steelblue;
+    text-align: center;
+    border-radius: 3px;
+    width:100px;
+    height:36px;
+    top:6px;
+    left:-8px;
+    opacity:0.9;
+}
+.boardshead a{
+    color:white;
+    text-decoration: none;
+    font-size:20px;
+    font-weight:700;
+
+
+}
+.boardshead:hover
+{
+    opacity:1.0;
+    cursor: pointer;
+}
+.boardadd
+{
+    position: relative;
+    background-color:steelblue;
+    border-radius: 3px;
+    top:8px;
+    left:970px;
+    opacity:0.9;
+
+}
+.boardadd a
+{
+    color:white;
+    font-size:23px;
+    padding: 10px;
+    text-decoration: none;
+}
+.boardadd:hover
+{
+    opacity: 1.0;
+}
+.userdet
+{
+    position: relative;
+    left:980px;
+    background-color:steelblue;
+    border-radius: 3px;
+    opacity: 0.9;
+    top:8px;
+}
+.userdet a
+{
+    color:white;
+    font-size:23px;
+    padding: 10px;
+    text-decoration: none;
+
+}
+.userdet:hover
+{
+    opacity:1;
+}
+#123
+{
+    position: absolute;
+    top:10px;
+
+}
+.info
+{
+    position: relative;
+    left:990px;
+    background-color:steelblue;
+    border-radius: 3px;
+    opacity: 0.9;
+    top:8px;
+    height:30px;
+    width: 35px;
+}
+.info a
+{
+    text-decoration: none;
+    position: relative;
+    top:5px;
+    left:8px;
+    font-size:18px;
+}
+.info:hover
+{
+    opacity: 1.0;
+}
+.notific
+{
+    position: relative;
+    left:1000px;
+    background-color:steelblue;
+    border-radius: 3px;
+    opacity: 0.9;
+    top:8px;
+    height:30px;
+    width:35px;
+}
+.notific a
+{
+    text-decoration: none;
+    position: relative;
+    top:5px;
+    left:8px;
+    font-size:18px;
+}
+.notific:hover
+{
+    opacity: 1.0;
+}

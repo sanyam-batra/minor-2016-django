@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-signin-client_id" content="327851565596-dirjea6hm94oad6ehkdmn9dmhcsskq7i.apps.googleusercontent.com">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bad+Script" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'Home/welcome.css' %}" />-->
+</head>
+<body>
+
+<div class="container">
+    <div class="appname">
+        <h1><b>Cardboard</b></h1>
+    </div>
+    <div class="appwork">
+        <h3>Cardboard lets you work more collaboratively and get more done.</h3>
+    </div>
+    <div class="about">
+        <h4>Cardboard’s boards, lists, and cards enable you to organize and prioritize your projects in a fun, flexible and rewarding way.</h4>
+    </div>
+    <br>
+    <div class="signin">
+        <form  action="{% url 'Home:signup' %}" method="post">
+            {% csrf_token %}
+             <button type="submit" value="signup" id="sign" class="btn btn-primary" style="background:olivedrab;text-align:center;font-size:19px;font-weight:800;color:whitesmoke;">Sign Up-Its's Free</button>
+        </form>
+    </div>
+    <br>
+    <div class="login">
+       <a href="{% url 'Home:login' %}">Login.....</a>
+    </div>
+    <br>
+    <div class="g-signin2" id="google" data-onsuccess="onSignIn"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'Cards/base.html' %}
+{% block body %}
+    <title>CardBoard | Boards</title>
+{% load staticfiles %}
+    {% include 'Cards/navigation.html' %}
+
+    <div class="container">
+     <h2>My Boards</h2>
+
+        <div class="well" style="background: white;">
+
+            {% if flag == 1 %}
+               {% for x in boards %}
+                   <a href="{% url 'boards:list-add' x.uuid %}" style="text-decoration: none; padding: 2%;">
+                   <div style="position:relative; display:inline-block; width: 20em; height: 8em; background-color: #026aa7; border-radius: 3%; text-align: center; margin-top: 2%;">
+                        <strong style="font-size: 20px; color: white;">{{ x.title }}</strong>
+                    </div>
+                   </a>
+            {% endfor %}
+
+            {% else %}
+                <h4 style="color: gray;">Oops! You don't have any Boards</h4>
+            {% endif %}
+        <br>
+
+        <br><br><br>
+
+
+
+<h4>Make New Board</h4>
+        <div class="panel-group" style="width: 300px;">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1" style="text-decoration: none;">Add Board</a>
+        </h4>
+        </div>
+
+        <div id="collapse1" class="panel-collapse collapse" style="padding: 5%;">
+            <form action="" method="post">
+            {% csrf_token %}
+        <div class="panel-body">Title</div>
+            <div class="form-group">
+            <input type="text" class="form-control" name="titlebox"></div>
+                <button type="submit" class="btn btn-success">Add Board</button>
+            </form>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+{% endblock %}

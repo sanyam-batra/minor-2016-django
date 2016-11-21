@@ -1,0 +1,15 @@
+.link
+{
+    display: inline-block;
+    margin-left: 52%;
+    font-size: 1.2em;
+}
+.link a
+{
+    text-decoration: none;
+}
+.link a:hover
+{
+    text-decoration: none;
+
+}

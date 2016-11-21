@@ -1,0 +1,194 @@
+ {% for y in x.database.all %}
+
+            <script type="text/javascript">
+
+            $(document).ready(function(){
+            $("#add_item{{ y.pk }}").hide();
+            $("#item_add1{{ y.pk }}").click(function(){
+            $("#item_add1{{ y.pk }}").hide();
+            $("#add_item{{y.pk }}").show();
+            $("#itemfill{{ y.pk }}").focus().val($("#itemfill{{ y.pk }}").val());
+
+            });
+
+            });
+
+            $(document).ready(function(){
+            $("#add_item{{ y.pk }}").on('focusout', function () {
+            var $elem = $(this);
+            setTimeout(function () {
+            if (!$elem.find(':focus').length) {
+            $("#add_item{{ y.pk }}").hide();
+            $("#item_add1{{ y.pk }}").show();
+            }
+            }, 0);
+            });
+            });
+
+            $(document).ready(function () {
+                     $(document).on('submit','#add_item{{y.pk }}',function (e) {
+                         e.preventDefault();
+                         alert('continue?{{ y.pk }}');
+                         $.ajax({
+                             type:"post",
+                             url:$(this).attr("href"),
+                             data:{
+                                 checkneed:$('#list_title{{ y.pk }}').val(),
+                                 attrr:$('#itemfill{{ y.pk }}').val(),
+                                 card_id:$('#card_id_listt{{ x.id }}').val(),
+                                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                             },
+                             success:function (data) {
+                                 $('#whole_checklist{{ x.pk }}').html(data);
+                                 alert('Done item');
+                             },
+                             error:function(exception){alert('Exception:'+exception);}
+
+                         });
+                         e.preventDefault();
+                     });
+                  });
+
+
+
+             </script>
+             {% if y.type == 3 %}
+                {% for z in y.checklist.all|slice:":1" %}
+                    <div class="checklist">
+                    <div class="progress">
+                      <div class="progress-bar" id="progbar{{ y.pk }}" role="progressbar" aria-valuenow="70"
+                      aria-valuemin="0" aria-valuemax="100">
+                        <span id="per{{ y.pk }}"></span>
+                      </div>
+                    </div>
+                    <div class="check"> <span class="glyphicon glyphicon-check"></span> <b>{{ z.Check_title }}</b></div>
+                    <div class="add_item_link"><a href="#"   id="item_add1{{ y.pk }}" title="Add Item" >Add an Item</a></div>
+                    {% endfor %}
+                    <form>
+                    {% csrf_token %}
+
+
+
+
+
+
+{% for z in y.checklist.all %}
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+        $(document).on('change', '#checkk{{ z.pk }}', function () {
+            var count = 0;
+            var checked = 0;
+            count = $('input[name="checkajax{{ y.pk }}"]').length;
+            //console.log(count);
+            checked = $('input[name="checkajax{{ y.pk }}"]:checked').length;
+            //console.log(checked);
+            var percentage = parseInt(((checked / count) * 100), 10);
+            //console.log(percentage);
+            $("#progbar{{ y.pk }}").css({"width": percentage + "%"});
+            $("#per{{ y.pk }}").text(percentage + "%");
+        });
+    });
+
+    $(document).ready(function () {
+
+
+            if($("#checkk{{ z.pk }}").val()=='True')
+            {
+            $("#checkk{{ z.pk }}").prop('checked',true);
+            }
+
+
+    });
+
+
+
+    $(document).ready(function () {
+
+        $(document).on('change','#checkk{{ z.pk }}',function (e) {
+
+            var boo;
+
+           if($(this).is(':checked'))
+           {
+
+              boo="1";
+               //alert("true");
+           }
+
+            else if(!($(this).is(':checked')))
+           {
+
+               boo="0";
+               //alert("False");
+           }
+             e.preventDefault();
+            $.ajax({
+
+                type:'POST',
+                url:'itemadd/',
+                data:{
+                    zkeyval:$('#zkey{{ z.pk }}').val(),
+                    val:boo,
+                    xkeyval:$('#xkey{{ z.pk }}').val(),
+                    ykeyval:$('#ykey{{ z.pk }}').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+                },
+                success:function(data) {
+                    //alert("haha");
+
+
+
+                }
+                /*error:function () {
+                  alert("gh");
+                }*/
+            });
+        });
+
+    });
+</script>
+                       {% if  z.item != "" %}
+                            <input type="text" id="zkey{{ z.pk }}" value="{{ z.pk }}" hidden/>
+                            <input type="text" id="xkey{{ z.pk }}" value="{{ x.pk }}" hidden/>
+                            <input type="text" id="ykey{{ z.pk }}" value="{{ y.pk }}" hidden/>
+                            <div class="vastu" id="vastu{{ z.pk }}"><input type="checkbox" id="checkk{{ z.pk }}" name="checkajax{{ y.pk }}" value="{{ z.done }}" /> {{ z.item }}</div>
+
+                        {% endif %}
+{% endfor %}
+
+
+                    </form>
+                    </div>
+{% for z in y.checklist.all|slice:":1" %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //alert("h");
+           var countt=0;
+           var checkedd=0;
+           countt = $('input[name="checkajax{{ y.pk }}"]').length;
+           checkedd =  $('input[name="checkajax{{ y.pk }}"]:checked').length;
+            //console.log(checkedd);
+           var  per =  parseInt(((checkedd / countt) * 100), 10);
+           $("#progbar{{ y.pk }}").css({"width": per + "%"});
+            $("#per{{ y.pk }}").text(per + "%");
+        });
+    </script>
+{% endfor %}
+                    <br>
+                    <br>
+                    <br>
+
+                 <div style="width: 35%;">
+                 {% for z in y.checklist.all|slice:":1" %}
+
+                     <form action=" " href="{% url 'cards:add_checklist_item' %}" method="post"  name="item_form" id="add_item{{y.pk }}">
+                        {% csrf_token %}
+                        <input type="text" name="checkneed" value="{{ z.Check_title }}" id="list_title{{ y.pk }}" hidden>
+                        <input type="text" id="itemfill{{ y.pk }}" class="form-control" name="attrr">
+                        <input type="text" name="card_id" value="{{ x.pk }}" id="card_id_listt{{ x.pk }}" hidden>
+                        <button type="submit" class="btn btn-success" name="save_list_item">Save</button>
+                     </form>
+                 {% endfor %}
+                </div>
+         {% endif %}
+{% endfor %}

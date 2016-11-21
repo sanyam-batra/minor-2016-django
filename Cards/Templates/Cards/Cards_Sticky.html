@@ -1,0 +1,118 @@
+        <div class="modal fade" role="dialog" id="popUpWindow{{ x.pk }}">
+        <div class="modal-dialog" style="width: 50%; ">
+        <div class="modal-content" style="background-color: whitesmoke;">
+        <div class="modal-header" style="height: 235px; width:100%;">
+        <div class="image" style="box-shadow: 5px 5px 2px #cccccc; width: inherit;height: inherit;filter: brightness(50%);" ><img src="/media/default.jpg" class="img-responsive" style="width: inherit; height: inherit; overflow: hidden; "></div>
+
+
+        {% for y in x.database.all %}
+            {% if y.type == 0 %}
+                <div class="heading">
+                <h4 class="modal-title" style="height: 40%; width:100%; top:0%;">
+
+                    <div class="text-head">
+                    <b>{{ y.data }}</b>
+                    </div>
+                </h4>
+
+                </div>
+        </div>
+                {% endif %}
+        {% endfor %}
+
+        <div class="modal-body" style="margin-top: 5%;">
+
+            <!--   Description  -->
+            <div class="description" id="description{{ x.id }}" style="margin-bottom: 11%;">
+
+                <div class="desc" id="desc{{ x.id }}">
+                <div class="about"><i class="fa fa-pencil-square"></i><b> About</b></div><br>
+
+                    {% include 'Cards/desc_ajax.html' %}
+                </div>
+        </div>
+
+
+        <!--   Add Checklist Option  -->
+            <div class="panel-group" style="position:absolute;left:38em;top:53px;">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h4 class="panel-title" style="width:80px;">
+        <a data-toggle="collapse" href="#collapse1{{ x.pk }}" style="text-decoration: none;">Checklist</a>
+        </h4>
+        </div>
+
+        <div id="collapse1{{ x.pk }}" class="panel-collapse collapse" style="padding: 5%;">
+            <form id="add_check_ajax{{ x.pk }}" href="{% url 'cards:add_checklist' %}" method="post">
+            {% csrf_token %}
+        <div class="panel-body" style="width:210px;">Title</div>
+            <div class="form-group">
+            <input type="text" class="form-control" name="titlebox" id="title_box_list{{ x.pk }}"></div>
+            <input type="text" name="card_id" value="{{ x.pk }}" id="card_id_list{{ x.pk }}" hidden>
+            <button type="submit" class="btn btn-success" name="add_list">Add Checklist</button>
+            </form>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- Post Box -->
+        <div class="post-box" style="margin-bottom: 11%;">
+           <div class="post"><i class="fa fa-commenting" aria-hidden="true"></i><b> Post-Box</b></div>
+            <div class="post-form" style="width: 100%;margin-top: 8%; margin-left: 5%;">
+            <form id="post-form{{ x.id }}" href="{% url 'cards:store_post' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="text" name="card_id" id="c_id{{ x.id }}" value="{{ x.pk }}" hidden>
+                <div class="comment-frame" >
+                    <div class="comment-box" style="padding: 10px;">
+                        <textarea class="form-control" id="comment{{ x.id }}" name="com_text" rows="2" placeholder="Write a note…"></textarea>
+                        <div class="pho" style=" width:90%; height: 2em;" >
+                            <label for="upload{{ x.id }}">
+                              <span class="glyphicon glyphicon-picture" id="pic" aria-hidden="true" title="Upload Photo" style="font-size: 18px; padding-right: 2%;"></span>
+                              <input type="file" name="upload_photo" value="none" id="upload{{ x.id }}" style="display:none;">
+                            </label>
+                            <label for="upload1{{ x.id }}">
+                                <span class="glyphicon glyphicon-paperclip" id="pfa"  aria-hidden="true" title="Attach File" style="font-size: 18px;"></span>
+                                <input type="file" name="upload_attach" value="none" id="upload1{{ x.id }}" style="display:none;">
+                            </label>
+                            <input id="uploadFile{{ x.id }}" placeholder="Choose File" disabled="disabled" >
+                        <input id="uploadFile1{{ x.id }}" placeholder="Choose File" disabled="disabled" >
+                        </div>
+
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-success" id="add_each" name="add_all">
+            </form>
+
+            </div>
+
+        </div>
+
+            <!-- Checklits -->
+            <div id="whole_checklist{{ x.pk }}">
+            {% include 'Cards/checkbox_ajax.html' %}
+            </div>
+
+
+            <!-- Activities -->
+        <div class="activity">
+            <div class="act"><span class="glyphicon glyphicon-th-list"></span><b> Activities</b></div>
+            <div class="data_all" id="data_all{{ x.id }}" style="margin-top: 5%; height: 60em; overflow: scroll;">
+               {% include 'Cards/activity_ajax.html' %}
+        </div>
+        </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+        <form action="{% url 'cards:delete_card' x.pk %}" method="post" style="display: inline;">
+        {% csrf_token %}
+            <button class="btn btn-default" title="Delete Card"><span class="glyphicon glyphicon-trash"></span></button>
+         </form>
+        <button type="button" class="btn btn-default" title="Close Card" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+
+        </div>
+        </div>

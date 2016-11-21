@@ -1,0 +1,12 @@
+{% for y in x.database.all %}
+    {% if y.type == 6 %}
+            <div class="about-cont" id="about-co{{ x.id }}"style="margin-left: 5%; white-space: normal;"><a href="#" class="mylink{{ x.pk }}" id="des_id{{ x.id }}" title="Click To Change">{{ y.data }}</a></div>
+            <form id="pass{{ x.pk }}" href="{% url 'cards:desc_post' %}">
+                {% csrf_token %}
+                <input type="text" name="card_id" id="card_id{{ x.id }}" value="{{ x.pk }}" hidden>
+                <input type="text" name="data_id" id="data_id{{ x.id }}" value="{{ y.pk }}" hidden>
+                <input type="text" class="form-control" rows="2" style="width:100%; word-wrap: break-word;" id="highlight{{ x.pk }}" name="descpedit" value="{{ y.data }}" autocomplete="off">
+                <button type="submit" class="btn btn-success" name="save_about" id="save_me">Save</button>
+            </form>
+     {% endif %}
+{% endfor %}

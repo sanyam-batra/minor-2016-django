@@ -1,0 +1,184 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab';
+@import 'https://fonts.googleapis.com/css?family=Pacifico';
+body
+{
+    font-family: 'Roboto Slab', serif;
+}
+
+.appinfo
+{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+img
+{
+    width: inherit;
+    height: inherit;
+    filter: brightness(50%);
+}
+.appname h1
+{
+   position: absolute;
+   text-align: center;
+   left:150px;
+   font-size:70px;
+   color: blueviolet;
+   opacity:2;
+   background:-webkit-linear-gradient(floralwhite,blueviolet);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color:transparent;
+   top:-10px;
+}
+.appwork h3
+{
+    position: absolute;
+    top:100px;
+    letter-spacing:2px;
+    padding: 5px;
+   text-align: center;
+    font-size:24px;
+    font-weight:400;
+    word-spacing:3px;
+}
+.about h4
+{
+    position: absolute;
+    top:195px;
+    left:110px;
+    font-family: 'Bad Script', cursive;
+    right:75px;
+    font-size:20px;
+    font-weight: bolder;
+}
+.signin button
+{
+    padding:8px;
+    position: absolute;
+    top:300px;
+    left:250px;
+    height: 45px;
+    width:210px;
+    border: none;
+    opacity: 0.9;
+}
+.signin button:hover
+{
+    opacity: 1;
+}
+.login a{
+    position: absolute;
+    top:390px;
+    left:310px;
+    text-decoration: underline;
+    font-size:30px;
+    color:gray;
+}
+.login a:hover
+{
+    color: black;
+}
+.accheading h3
+{
+    position: relative;
+    top:45px;
+    left:210px;
+    font-weight: 600;
+    font-size: 40px;
+    font-family: 'Lemon', cursive;
+}
+.subbutton button
+{
+    position: relative;
+    top:160px;
+    left:215px;
+    font-weight:700;
+    font-size: 20px;
+    padding:11px;
+    border-radius:5px;
+}
+
+.tag1
+{
+    position: relative;
+    top:65px;
+    left:220px;
+    font-size: 25px;
+
+}
+.tag2
+{
+    position: relative;
+    top:85px;
+    left:220px;
+    font-size: 25px;
+
+}
+.tag3
+{
+    position: relative;
+    top:95px;
+    left:220px;
+    font-size: 25px;
+
+
+}
+.tag4
+{
+    position: relative;
+    top:105px;
+    left:220px;
+    font-size: 25px;
+
+
+}
+.tag5
+{
+    position: relative;
+    top:115px;
+    left:220px;
+    font-size: 25px;
+
+}
+.fff{
+    width: 270px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    background-color:lavenderblush;
+}
+
+.fff:focus
+{
+width:40%;
+}
+.haveacc
+{
+    position: relative;
+    top:190px;
+    left:215px;
+}
+.haveacc a
+{
+    text-decoration: underline;
+}
+.alreadyacc
+{
+    position: relative;
+    top:200px;
+    left:200px;
+}
+.alreadyacc a
+{
+    text-decoration: underline;
+}
+#google
+{
+    position: relative;
+    top:500px;
+    left:300px;
+}

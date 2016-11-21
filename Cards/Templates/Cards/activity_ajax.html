@@ -1,0 +1,21 @@
+{% for y in x.database.all %}
+            {% if y.type == 2 %}
+            <div class="imagebox" style="width:80%; ">
+            <img src="/media/{{ y.data }}"  style="width:100%; overflow: hidden; border-radius: 2%; box-shadow:0px 2px 2px #B3B3B3;">
+            </div>
+            <br>
+
+            {% elif y.type == 5 %}
+            <a href="/media/{{ y.data }}" target="_blank" style="margin-left:18px;">See File</a>
+
+            <br>
+            {% elif y.type == 1 %}
+                <div class="alert alert-info" style="margin-left: 18px; width:90%;">
+                {{ y.data }}
+                </div>
+
+
+
+
+                {% endif %}
+{% endfor %}

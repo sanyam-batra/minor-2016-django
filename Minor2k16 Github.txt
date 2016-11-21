@@ -1,0 +1,18 @@
+https://github.com/KamaljeetSingh/Minor-2016-Django
+
+Remote name -- gitminor
+
+Steps-
+git init
+git add .
+git commit -m "my commit"
+git remote add gitminor https:/.......
+git push -u gitminor master
+
+Deleting from Git-
+git rm -r --cached myfolder
+git commit -m "deleted"
+git push git push -u gitminor master
+
+
+

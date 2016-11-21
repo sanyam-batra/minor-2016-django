@@ -1,0 +1,40 @@
+{% extends 'Cards/base.html' %}
+{% block body %}
+{% load staticfiles %}
+<title>
+    Cardboard
+</title>
+    {% include 'Cards/navigation.html' %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'Cards/cards.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Cards/sticky.css' %}">
+
+
+<div class="container-fluid">
+<h1>Cards</h1>
+<div class="well" id="well_id">
+<ul class="cards_display">
+    {% for x in cards %}
+        <li>
+            <a href="#popUpWindow{{ x.pk }}" name="check_user" data-toggle="modal" style="text-decoration: none;">
+            <div id="sum{{ x.pk }}" style="margin-top: 20%;">
+            {% for y in x.database.all %}
+                {% if y.type == 0 %}
+                    <h2>{{ y.data }}</h2>
+                {% elif y.type == 6 %}
+                    <p>{{ y.data }}</p>
+                {% endif %}
+                {% endfor %}
+            <p style="text-align: right; color: dimgray;">{{ x.card_date }}</p>
+            </div>
+        </a>
+
+        </li>
+        {% include 'Cards/Card_Modals.html' %}
+        {% include 'Cards/Cards_Sticky.html' %}
+    {% endfor %}
+
+</ul>
+</div>
+</div>
+{% endblock %}
