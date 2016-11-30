@@ -14,6 +14,10 @@
                    <a href="{% url 'boards:list-add' x.uuid %}" style="text-decoration: none; padding: 2%;">
                    <div style="position:relative; display:inline-block; width: 20em; height: 8em; background-color: #026aa7; border-radius: 3%; text-align: center; margin-top: 2%;">
                         <strong style="font-size: 20px; color: white;">{{ x.title }}</strong>
+                        <form action="{% url 'boards:delete_board' x.pk %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                            <button class="btn btn-default" title="Delete Card"><span class="glyphicon glyphicon-trash"></span></button>
+                         </form>
                     </div>
                    </a>
             {% endfor %}

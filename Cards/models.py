@@ -44,6 +44,7 @@ class Data(models.Model):
     type = models.IntegerField()
     data = models.CharField(max_length=1000)
     checklist = models.ManyToManyField(ChecklistItems, related_name='checklist')
+    user_name = models.CharField(max_length=1000,default=" ")
 
     def __str__(self):
         return self.data
@@ -61,7 +62,6 @@ class Cards(models.Model):
 
 class Card_id(models.Model):
     key = models.CharField(max_length=50)
-    change = models.IntegerField(default=0)
 
 
     def __str__(self):
@@ -78,7 +78,7 @@ class Cards_title(models.Model):
 
 class Status(models.Model):
     username = models.CharField(max_length=100)
-    card_id = models.CharField(max_length=100)
+    card_id = models.ManyToManyField(Card_id, related_name='stats')
 
     def __str__(self):
         return str(self.username)

@@ -166,6 +166,7 @@ def Store_post(request):
                 datanew = Data()
                 datanew.type = 1
                 datanew.data = com
+                datanew.user_name = request.user.first_name
                 datanew.save()
                 card = Cards.objects.get(id=card_id)
                 card.database.add(datanew)
@@ -177,6 +178,7 @@ def Store_post(request):
                 datanew = Data()
                 datanew.type = 2
                 datanew.data = str(card_attach.photo)
+                datanew.user_name = request.user.first_name
                 datanew.save()
                 card = Cards.objects.get(pk=card_id)
                 card.database.add(datanew)
@@ -188,6 +190,7 @@ def Store_post(request):
                 datanew = Data()
                 datanew.type = 5
                 datanew.data = str(card_attach.photo)
+                datanew.user_name = request.user.first_name
                 datanew.save()
                 card = Cards.objects.get(pk=card_id)
                 card.database.add(datanew)
@@ -248,8 +251,9 @@ class Cardlist(APIView):
 
 class Statuslist(APIView):
 
-    def get(self, request):
-        status = Status.objects.all()
+    def get(self, request,  key):
+        u = User.objects.get(username=key)
+        status = Status.objects.filter(username=u.username)
         serializer = StatusSerializers(status, many=True)
         return Response(serializer.data)
 

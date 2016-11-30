@@ -16,7 +16,12 @@
         <div class="cardboard">
         <p class="list_title">
             <b>{{ q.title }}</b>
+
         </p>
+        <form action="{% url 'boards:delete_list' q.pk %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <button class="btn btn-default" title="Delete Card"><span class="glyphicon glyphicon-trash"></span></button>
+            </form>
         {% for p in q.listofcards.all %}
                 {% for x in cards %}
                     {% if x.key == p.key %}
@@ -25,6 +30,7 @@
                 {% for z in names %}
                     {% if z.c_key == p %}
                         {{ z.name }}
+
                     {% endif %}
                 {% endfor %}
                 </div>
@@ -88,7 +94,7 @@
         </div>
 
 
-        <!--{% include 'alpha/home.html' %}-->
+        {% include 'alpha/home.html' %}
 
 
 

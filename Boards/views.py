@@ -1,6 +1,8 @@
 import random
 import string
 from django.shortcuts import render,redirect,HttpResponse
+from django.views.generic.edit import DeleteView
+from django.core.urlresolvers import reverse_lazy
 from .models import *
 from Home.models import *
 from Cards.models import *
@@ -99,4 +101,11 @@ def list_add(request, idd):
         redirect('Home:login')
 
 
+class DeleteBoard(DeleteView):
+    model = Boards
+    success_url = reverse_lazy('boards:boards_add')
 
+
+class DeleteList(DeleteView):
+    model = ListofCards
+    success_url = reverse_lazy('boards:boards_add')
